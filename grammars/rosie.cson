@@ -1,0 +1,133 @@
+scopeName: 'rosie'
+name: 'Rosie Pattern Language'
+fileTypes: [
+  'rpl',
+  'rosierc'
+]
+comments:
+  start: '-- '
+
+repository:
+  escaped_char:
+    match: '\\\\'
+    name: 'constant.character.escape.rosie'
+
+patterns: [
+  {
+    match: '^(local )?(alias )?(\\w+) = '
+    captures:
+      1:
+        name: 'keyword.other.special-method.rosie'
+      2:
+        name: 'keyword.other.special-method.rosie'
+      3:
+        name: 'variable.language.rosie'
+  }
+  {
+    match: '\\b(alias|as)\\b'
+    name: 'keyword.other.special-method.rosie'
+  }
+  {
+    match: '\\b(package)\\s+(\\w+)$'
+    captures:
+      1:
+        name: 'entity.name.section.rosie'
+      2:
+        name: 'entity.other.attribute-name.rosie'
+  }
+  {
+    begin: '\\bimport\\s+',
+    end: '$'
+    contentName: 'entity.other.attribute-name.rosie'
+    name: 'entity.name.section.rosie'
+  }
+  {
+    match: '\\b(rpl)\\s+(\\d\.\\d)$'
+    captures:
+      1:
+        name: 'keyword.other.special-method.rosie'
+      2:
+        name: 'constant.numeric.rosie'
+  }
+  {
+    match: '(grammar|in|end)$'
+    name: 'entity.name.type.rosie'
+  }
+  {
+    match: "{(\\s*\\d*\\s*),(\\s*\\d*\\s*)}"
+    captures:
+      1:
+        name: 'constant.numeric.rosie'
+      2:
+        name: 'constant.numeric.rosie'
+    name: "variable.other.rosie"
+  }
+  {
+    match: '({|}|\\(|\\))'
+    name: 'support.type.rosie'
+  }
+  {
+    match: "(/|\\*|\\?|\\+|~)"
+    name: "keyword.control.rosie"
+  }
+  {
+    match: "(!|@)"
+    name: "keyword.other.rosie"
+  }
+  {
+    match: '#\\w+'
+    name: 'string.quoted.double.rosie'
+  }
+  {
+    match: '[\\[{].*?".*?[\\]}]|("(\\\\"|.)*?")'
+    captures:
+      1:
+        name: 'string.quoted.double.rosie'
+  }
+  {
+    match: '(\\[:)(\\^)?(\\w+)(:\\])'
+    captures:
+      2:
+        name: 'keyword.control.rosie'
+      3:
+        name: "constant.language.rosie"
+    name: "constant.character.rosie"
+  }
+  {
+    match: '(\\[|\\])'
+    name: "constant.character.rosie"
+  }
+  {
+    match: "\\[\\^?([^\\[^\\]]|\\.)-([^\\[^\\]]|\\.)]"
+    captures:
+      1:
+        name: "constant.character.rosie"
+      2:
+        name: "constant.character.rosie"
+    name: "variable.other.rosie"
+  }
+  {
+    match: "(accepts|rejects|contained|includes|excludes)"
+    name: "keyword.control.rosie"
+  }
+  {
+    match: '(\\w+):[\\({]?((\\w+),?)+[\\)}]?'
+    captures:
+      1:
+        name: 'entity.name.function.rosie'
+    name: 'variable.language.rosie'
+  }
+  {
+    match: '^-- test'
+    name: 'markup.raw.rosie'
+  }
+  {
+    begin: '--'
+    end: '$'
+    name: 'comment.line.double-dash.rosie'
+  }
+  {
+    match: '[a-zA-Z0-9]+(_?[a-zA-Z0-9])*'
+    name: 'variable.language.rosie'
+  }
+]
