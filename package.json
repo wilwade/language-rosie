@@ -1,7 +1,7 @@
 {
   "name": "language-rosie",
   "main": "./lib/language-rosie",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Syntax Highlighting for the Rosie Pattern Language",
   "keywords": [
     "rosie",
